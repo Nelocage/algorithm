@@ -1,20 +1,20 @@
 # 问题提出
-# 如何实现用户的历史记录功能（最多N 条）
+        # 如何实现用户的历史记录功能（最多N 条）
 # 场景模拟
-# 浏览器
-# 视频播放器可以查看最近播放过的视频文件
-# shell可以查看用户输入过的命令
+        # 浏览器
+        # 视频播放器可以查看最近播放过的视频文件
+        #shell可以查看用户输入过的命令
 
 # 案例解析
-# 一个简单的猜数字小游戏，添加历史记录功能，显示用户最近猜过的数字
+        # 一个简单的猜数字小游戏，添加历史记录功能，显示用户最近猜过的数字
 
 # 需要认真学习知识
-# pyhton的上下文管理器，with
-# 文件的读入权限，rb wb
-# python 的文件操作
+        # pyhton的上下文管理器，with
+        # 文件的读入权限，rb wb
+        # python 的文件操作
 
 # 备注
-# 这个程序现在没有完成，history的功能没有实现，对于Python文件的读写不了解，程序没有全部完成
+        # 这个程序现在没有完成，history的功能没有实现，对于Python文件的读写不了解，程序没有全部完成
 # 游戏代码
 from random import randint
 from collections import deque
@@ -58,11 +58,11 @@ pickle.dump(history, open('history'), 'wb')  # pickle.dump需要两个参数，�
 # 下一次运行程序的时候，需要一个反向操作，pickle.load(),python中凡是需要传入一个文件的，都需要open这个函数，比如要看，则是open（..).read()
 # pickle.load(open('history'))
 # 实现历史记录功能
-# 解决方法
-# 使用标准库collections中的deque，它是一个双端循环队列
-# 双端循环队列特别重要
-# 若队列满时，则新进来的元素入队，第一个元素出队
-# 程序退出前，可以使用pickle将队列对象存入文件，再次运行程序时将其导出
+#  解决方法
+        # 使用标准库collections中的deque，它是一个双端循环队列
+        # 双端循环队列特别重要
+        # 若队列满时，则新进来的元素入队，第一个元素出队
+        # 程序退出前，可以使用pickle将队列对象存入文件，再次运行程序时将其导出
 
 # 使用deque
 from collections import deque

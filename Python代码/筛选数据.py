@@ -1,11 +1,11 @@
 # 问题提出：如何在列表，字典，集合中根据条件筛选数据
-# 场景举例
-# 过滤掉列表中的负数
-# 筛选出字典中高于90的项
-# 筛出集合中能被3整除的元素
+        # 场景举例
+        # 过滤掉列表中的负数
+        # 筛选出字典中高于90的项
+        # 筛出集合中能被3整除的元素
 
 # 常规思路
-# 常规思路 用迭代的方式遍历每一个元素
+    # 常规思路 用迭代的方式遍历每一个元素
 
 data = [1, 2, -3, 42, -5]
 res = []
@@ -17,13 +17,14 @@ print(res)
 # 在Python中可以使用一些高级工具
 
 
+#序列的解析十分重要，可以筛选数据
 # 列表
-# filter函数:filter(lambda x:x>=0,data)
-# 列表解析:[x for x in data if x>=0] *首选
+        # filter函数:filter(lambda x:x>=0,data)
+        # 列表解析:[x for x in data if x>=0] *首选
 # 字典
-# 字典解析:{k:v for k ,v in data.iteritems()if v>90}
+        # 字典解析:{k:v for k ,v in data.iteritems()if v>90}
 # 集合解析
-# {x for x in s if x%3==0}
+        # {x for x in s if x%3==0}
 
 
 # 列表举例
