@@ -31,7 +31,7 @@ else:
 
 def guess(k):
     if k == number:
-        print("真几把聪明")
+        print("真聪明")
         return True
     if k < number:
         print("低了")
