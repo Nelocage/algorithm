@@ -23,8 +23,8 @@ import os
 
 number = randint(0, 100)
 if os.path.exists('history') and open('history').read().__len__() != 0:
-    file = open('history', 'rb')
-    history = pickle.load(open('history'))
+    file = open('history', 'r+')
+    history = pickle.loads(open('history'))
 else:
     history = deque([], 10)
 
@@ -53,7 +53,7 @@ while True:
         print(list(history))
 # 这段代码暂时不能运行，不知道如何每次运行时加载
 
-pickle.dump(history, open('history'), 'wb')  # pickle.dump需要两个参数，第一个是需要保存的文件，第二个是一个文件对象.w参数给他一个可写的权限
+pickle.dumps(history, open('history'), 'w+')  # pickle.dump需要两个参数，第一个是需要保存的文件，第二个是一个文件对象.w参数给他一个可写的权限
 
 # 下一次运行程序的时候，需要一个反向操作，pickle.load(),python中凡是需要传入一个文件的，都需要open这个函数，比如要看，则是open（..).read()
 # pickle.load(open('history'))
