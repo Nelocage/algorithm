@@ -189,4 +189,45 @@ RThread=ReadThread(q,WEvent,REvent)
 WThread.start()
 RThread.start()
 
+#问题
+        #如何使用线程本地数据
+        #可以解决多线程并发的问题
 
+#知识补充
+        #如果在多线程并发环境中，一个可变对象涉及到共享与竞争，那么该可变对象就一定会涉及到线程间同步操作
+        #这就是多线程并发的问题，否则该可变对象将作为线程私有对象，可通过threadlocal进行管理，实现线程间私有对象隔离的目的
+        # threadlocal并没有解决多线程并发的问题，因为threadlocal管理的可变对象的性质本来就不会涉及到多线程并发而引发的
+        # 共享，竞争和同步问题，使用threadlocal管理只是方便了多线程获取和使用该私有可变对象的途径和方
+
+#解决方法
+        #threading.local函数可以创建线程本地数据空间，其下属性对每个线程独立存在
+
+#线程池
+from concurrent.futures import ThreadPoolExecutor   #使用submit和map方法可以用来启动线程池中线程执行任务
+executor=ThreadPoolExecutor(3)   #参数指定线程池中有几个线程
+
+#使用线程池中的线程去执行任务
+#任务函数
+def f(a,b):
+    print('f',a,b)
+    return a**b
+
+#通过submit方法调用线程池中的线程
+res=executor.submit(f,2,3)  #第一个参数为任务函数名，之后的参数为任务函数所需要的参数  调用之后，那个线程又会被归还到线程池中
+print(res.result())  #正常是不返回结果的，可以通过这个函数来得到运行结果,也是一个阻塞函数，若线程没有运行完，他将一直等待，直到运行完成
+
+
+#map函数在多个线程上同时调用任务函数
+executor.map(f,[2,3],[2,3])  #之后的参数均为任务函数的参数列表
+
+#问题
+        #如何使用多进程
+        #https://blog.csdn.net/CityzenOldwang/article/details/78584175
+        #由于全局解释锁的存在， 在任意时刻，只允许一个线程在解释器中运行，因此Python的多线程不适合处理CPU密集型任务
+        #想要处理CPU密集型任务，可以使用多进程模型
+from multiprocessing import Process
+def f(s):
+    print(s)
+
+p=Process(target=f,args=('hello'))
+p.start()
