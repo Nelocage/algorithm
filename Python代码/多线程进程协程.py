@@ -150,7 +150,7 @@ from threading import Event
 class WriteThread(Thread):
     def __init__(self,queue,WEvent,REvent):  #第二个参数需要一个queue
         Thread.__init__(self)
-        self.queue=queue
+        self.queue=queue        #将值赋给类的内部对象
         self.WEvent=WEvent
         self.REvent=REvent
 
